@@ -2,9 +2,7 @@
 
 `sinopia` - a private/caching npm repository server
 
-[![npm version badge](https://img.shields.io/npm/v/sinopia.svg)](https://www.npmjs.org/package/sinopia)
-[![travis badge](http://img.shields.io/travis/rlidwka/sinopia.svg)](https://travis-ci.org/rlidwka/sinopia)
-[![downloads badge](http://img.shields.io/npm/dm/sinopia.svg)](https://www.npmjs.org/package/sinopia)
+[![travis badge](http://img.shields.io/travis/verdaccio/verdaccio.svg)](https://travis-ci.org/verdaccio/verdaccio)
 
 It allows you to have a local npm registry with zero configuration. You don't have to install and replicate an entire CouchDB database. Sinopia keeps its own small database and, if a package doesn't exist there, it asks npmjs.org for it keeping only those packages you use.
 
@@ -51,7 +49,15 @@ Now you can navigate to [http://localhost:4873/](http://localhost:4873/) where y
 
 ### Docker
 
-A Sinopia docker image [is available](https://registry.hub.docker.com/u/keyvanfatehi/sinopia/)
+`docker build -t verdaccio .`
+
+```
+docker run -it --rm --name verdaccio -p 4873:4873 \
+  -v /<path to verdaccio directory>/conf:/verdaccio/conf \
+  -v /<path to verdaccio directory>/storage:/verdaccio/storage \
+  -v /<path to verdaccio directory>/local_storage:/verdaccio/local_storage \
+  verdaccio
+```
 
 ### Chef
 
